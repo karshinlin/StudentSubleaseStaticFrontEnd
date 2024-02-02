@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Bootstrap -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design for Bootstrap -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.16/css/mdb.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="base.css">
+    <link rel="stylesheet" type="text/css" href="main.css">
+
+    <title>studentsublease.com</title>
+    <meta name="description" content="studentsublease.com was created by students for students. We connect college students who need to find a subletter with those who need a short-term place to live. Find a sublease in Atlanta today!">
+    <meta name="robots" content="index, follow" />
+</head>
+<body style="height: 100%; overflow: visible;">
+    <header>
+        <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-white scrolling-navbar shadow pb-1">
+            <div class="container">
+                <a class="navbar-brand mr-3" href="#"><strong style="font-size: 18px;"><img class="logo-sm mr-1 pb-1" src="images/100_Blue.png"> studentsublease.com</strong></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span><sup><i class="notification fa fa-circle fa-lg text-danger-dark" style="display: none; position: absolute; left: -13px; top: 3px;"></i></sup>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="#">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Search</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Create Listing</a>
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Contact Us</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Login</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Register</a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div class="view intro-2">
+            <div class="full-bg-img">
+                <div class="mask rgba-black-light flex-center" style="background-color: rgba(24, 27, 32, 0.5);">
+                    <div class="container text-center white-text">
+                        <!-- {% if messages %}
+                        {% for message in messages %}
+                        <div class="alert alert-{{ message.tags }}">
+                            {{ message }}
+                        </div>
+                        {% endfor %}
+                        {% endif %} -->
+                        <div class="alert alert-info">
+                            <h2>As of January 2024, the StudentSublease team has decided to discontinue the platform. We apologize for any inconvenience.</h2>
+                        </div>
+                        <div class="white-text text-center wow fadeInUp">
+                            <h3>Find Your Home Away From Home</h3>
+                            <h5>By Students. For Students.</h5>
+                            <form method="POST" id="search-form">
+                                <!-- {% csrf_token %} -->
+                                <div class="input-group md-form form-sm form-3 pl-0 w-50 mx-auto">
+                                    <div class="input-group-prepend">
+                                        <a href="#" id="search-box">
+                                            <span class="input-group-text bg-transparent border-0"><i
+                                                class="fa fa-search text-black" style="color:white" aria-hidden="true"></i></span>
+                                        </a>
+        
+                                    </div>
+                                    <input id="autocomplete" value="" class="form-control my-0 py-1 border border-white rounded text-white search-box" placeholder="Search a location..." type="text" />
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Terms Modal -->
+    <div class="modal fade" id="termsModal" tabindex="-1" role="dialog" aria-labelledby="termsModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-legal">
+            <div class="modal-content modal-content-legal" style="border-radius: 10px; height: 100%;">
+                <div class="modal-header" style="height: 10%; min-height:60px;">
+                    <h6 class="modal-title w-100" id="termsModalLabel"><b>Student Sublease Terms of Service</b></h6>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body modal-body-legal">
+                    <h6><b>Effective: January 1, 2021</b></h6>
+                    <br>
+                    <h6><b>1. Introduction</b></h6>
+                    <p>
+                        These Terms of Service ("Terms") govern your access or use, from within the United States and its territories and possessions,
+                        of the applications, websites, content, products, and services (the "Services," as more fully defined below in Section 2).
+                        PLEASE READ THESE TERMS CAREFULLY, AS THEY CONSTITUTE A LEGAL AGREEMENT BETWEEN YOU AND STUDENT SUBLEASE, LLC (“Student Sublease”).
+                        By accessing or using our Services, you agree to be bound by these Terms. If you do not agree to these Terms, you may not access or use the Services.
+                        These Terms expressly supersede any prior agreements or arrangements between you and us, whether verbal or written. Student
+                        Sublease may immediately terminate these Terms or any Services with respect to you, or generally cease offering or deny
+                        access to the Services or any portion thereof, at any time for any reason.
+                        <br>
+                        <br>
+                        Supplemental terms may apply to certain Services, such as policies for a particular event, program, activity or promotion in
+                        connection with the applicable Service(s). Supplemental terms are in addition to, and shall be deemed a part of, the Terms
+                        for the purposes of the applicable Service(s). Supplemental terms shall prevail over these Terms in the event of a conflict
+                        with respect to the applicable Services.
+                        <br>
+                        <br>
+                        Student Sublease may amend these Terms from time to time, and any such amendments will be effective upon Student Sublease's
+                        posting of such updated Terms at this location or in the amended policies or supplemental terms on the applicable Service(s). Your continued access or use of the Services after such posting confirms your consent to be bound by the amended Terms.
+                        <br>
+                        <br>
+                        Student Sublease’s collection and use of personal information in connection with the Services is described in Student Sublease's
+                        Privacy Policy located at our website <b style="color: #33b5e5;">www.studentsublease.com</b>.
+                    </p>
+                    <h6><b>2. The Services</b></h6>
+                    <p>
+                        The Services comprise mobile, web, and cloud based applications and related services (each, an “Application”), which enable
+                        users to search, post, upload, and communicate via messaging about Residential Listings including apartments, houses, and
+                        other living spaces. “Residential Listings” in these Terms shall refer, but is not limited, to any sublet, sublease, or
+                        listing of an apartment, house, or other living space that is posted, uploaded, or listed in accordance with the terms set
+                        forth by such Residential Listing’s landlord or owner. (“Unless otherwise agreed by Student Sublease in a separate written
+                        agreement with you, the Services are being offered solely for your personal, noncommercial use.  YOU ACKNOWLEDGE THAT YOUR
+                        ABILITY TO RENT, SUBLEASE, SUBLET, OR BUY A RESIDENTIAL LISTING OR TO OBTAIN AN INTERESTED PARTY IN A RESIDENTIAL LISTING
+                        LISTED, POSTED, OR UPLOADED BY YOU DOES NOT ESTABLISH STUDENT SUBLEASE AS A PROVIDER OF RESIDENTIAL LISTINGS. STUDENT
+                        SUBLEASE IS AN APPLICATION THAT CONNECTS INTERESTED PARTIES. THE SERVICES EXPRESSLY EXCLUDE STUDENT SUBLEASE FROM PROVIDING
+                        OR GUARANTEEING THE ACQUISITION OR LIVING ARRANGEMENTS SET FORTH IN A RESIDENTIAL LISTING.”)
+                    </p>
+                    <h6><b>3. License</b></h6>
+                    <p>
+                        Subject to your compliance with these Terms, Student Sublease grants you a limited, non-exclusive, non-sublicensable,
+                        revocable, non-transferable license to: (i) access and use the Applications on your personal device solely in connection
+                        with your use of the Services; and (ii) access and use any content, information and related materials that may be made available
+                        through the Services, in each case solely for your personal, noncommercial use. Any rights not expressly granted herein are
+                        reserved by Student Sublease and Student Sublease's licensors.
+                    </p>
+                    <h6><b>4. Restrictions</b></h6>
+                    <p>
+                        You may not: (i) remove any copyright, trademark or other proprietary notices from any portion of the Services; (ii) reproduce,
+                        modify, prepare derivative works based upon, distribute, license, lease, sell, resell, transfer, publicly display, publicly
+                        perform, transmit, stream, broadcast or otherwise exploit the Services except as expressly permitted by Student Sublease;
+                        (iii) decompile, reverse engineer or disassemble the Services except as may be permitted by applicable law; (iv) link to,
+                        mirror, or frame any portion of the Services; (v) cause or launch any programs or scripts for the purpose of scraping,
+                        indexing, surveying, or otherwise data mining any portion of the Services or unduly burdening or hindering the operation
+                        and/or functionality of any aspect of the Services; or (vi) attempt to gain unauthorized access to or impair any aspect of
+                        the Services or its related systems or networks.
+                    </p>
+                    <h6><b>5. Third Party Services and Content</b></h6>
+                    <p>
+                        The Services may be made available or accessed in connection with third party services and content (including advertising)
+                        that Student Sublease does not control. You acknowledge that different terms of use and privacy policies may apply to your
+                        use of such third party services and content. Student Sublease does not endorse such third party services and content and
+                        in no event shall Student Sublease be responsible or liable for any products or services of such third parties. Additionally, any third party used to access the Services or its related systems or networks will be a third-party beneficiary to this contract. These third party beneficiaries are not parties to this contract and are not responsible for the provision or support of the Services in any manner. Your access to the Services using any third party is subject to terms set forth in the applicable third party beneficiary's terms of service.
+                    </p>
+                    <h6><b>6. Ownership</b></h6>
+                    <p>
+                        The Services and all rights therein are and shall remain Student Sublease's property or the property of Student Sublease's
+                        licensors. Neither these Terms nor your use of the Services convey or grant to you any rights: (i) in or related to the
+                        Services except for the limited license granted above; or (ii) to use or reference in any manner Student Sublease's company
+                        names, logos, product and service names, trademarks or services marks or those of Student Sublease's licensors.
+                    </p>
+                    <h6><b>7. Access and Use of the Services</b></h6>
+                    <p>
+                        <b>A. User Accounts</b>
+                        <br>
+                        In order to use most aspects of the Services, you must register for and maintain an active personal user Services account
+                        ("Account"). You must be at least 17 years of age and attend a valid college or university to obtain an Account. Account
+                        registration requires you to submit certain personal information, such as the college or university you attend, your name,
+                        your email address, and your mobile phone number. You shall maintain accurate, complete, and up-to-date information in your
+                        Account. Your failure to maintain accurate, complete, and up-to-date Account information may result in your inability to
+                        access or use the Services. You are responsible for all activity that occurs under your Account, and you agree to maintain
+                        the security and secrecy of your Account email and password at all times. Each individual user may only possess one Account.
+                        <br>
+                        <br>
+                        <b>B. User Requirements and Conduct</b>
+                        <br>
+                        Persons under the age of 17 may not use the Service. You may not authorize third parties to use your Account. You may not
+                        assign or otherwise transfer your Account to any other person or entity. You shall comply with all applicable laws when
+                        accessing or using the Services, and you may only access or use the Services for lawful purposes (e.g., no uploading or
+                        posting illegal Residential Listings including those which violate the terms of your Residential Listing’s landlord or owner).
+                        You may not cause nuisance, annoyance, or inconvenience through your access or use of the Services. You may not upload, post,
+                        email, message, or otherwise transmit any content that exhibits expressions of abuse, vulgar, profane or offensive language
+                        and/or imagery, obscenity, pornography, nudity or partial nudity (including boudoir imagery or lingerie photos). Additionally,
+                        content deemed inappropriate includes but is not limited to images or text depicting: child abuse, child pornography,
+                        depictions of minors engaged in sexual conduct or explicitly sexual situations, or any other material that could give rise to any
+                        civil or criminal liability under applicable state or federal law, or violating any laws or regulations of any governing
+                        body having jurisdiction over Student Sublease, its affiliates, or its customers. In certain instances, you may be asked to
+                        provide proof of identity or other method of identity verification to access or use the Services, and you agree that you may
+                        be denied access to or use of the Services if you refuse to provide proof of the same.
+                        <br>
+                        <br>
+                        <b>C. Text Messaging and Telephone Calls</b>
+                        <br>
+                        You acknowledge and agree that Student Sublease may contact you by email or text messages (including by an automatic
+                        telephone dialing system) at any of the phone numbers provided by you or on your behalf in connection with a Student
+                        Sublease account, including for marketing purposes. You understand that you are not required to provide this consent as a
+                        condition of purchasing any property, goods or services. You also understand that you may opt out of receiving text
+                        messages from Student Sublease at any time by contacting Student Sublease support at <b style="color: #33b5e5;">www.studentsublease.com/contact/</b>
+                        or opting out on your Student Sublease Account page. If you do not choose to opt out, Student Sublease may contact you as
+                        outlined in its Privacy Policy, located at <b style="color: #33b5e5;">www.studentsublease.com</b>.
+                        <br>
+                        <br>
+                        <b>D. Network Access and Devices</b>
+                        <br>
+                        You are responsible for obtaining the data network access necessary to use the Services. Your computer, wi-fi, and mobile
+                        network's data and messaging rates and fees will apply if you access or use the Services from any of your devices. You are
+                        responsible for acquiring and updating compatible hardware or devices necessary to access and use the Services and
+                        Applications and any updates thereto. Student Sublease does not guarantee that the Services, or any portion thereof, will
+                        function on any particular hardware or devices. In addition, the Services may be subject to malfunctions and delays
+                        inherent in the use of the Internet and electronic communications.
+                        <br>
+                        <br>
+                        <b>E. Residential Listings</b>
+                        <br>
+                        Student Sublease does not provide or guarantee the acquisition or living arrangements set forth in a Residential Listing
+                        made by you or another Student Sublease account holder or customer. You and any other Student Sublease account holder or
+                        customer must set and enforce your own terms when coming to any agreement regarding Residential Listings provided from The
+                        Services. You acknowledge that Student Sublease has no liability to you for any agreement made by you and another Student
+                        Sublease account holder or customer. You also acknowledge and agree that any Residential Listing created, posted, or
+                        uploaded by you is created, posted, or uploaded legally in accordance with the terms set forth by your Residential Listing’s
+                        landlord or owner.
+                    </p>
+                    <h6><b>8. Disclaimers; Limitation of Liability; Indemnity</b></h6>
+                    <p>
+                        <b>A. DISCLAIMER</b>
+                        <br>
+                        THE SERVICES ARE PROVIDED "AS IS" AND "AS AVAILABLE." STUDENT SUBLEASE DISCLAIMS ALL REPRESENTATIONS AND AGREEMENTS,
+                        EXPRESS, IMPLIED, OR STATUTORY, NOT EXPRESSLY SET OUT IN THESE TERMS, INCLUDING THE IMPLIED AGREEMENT OVER THE TERMS OF
+                        RESIDENTIAL LISTINGS SET FORTH BY YOU AND OTHER STUDENT SUBLEASE ACCOUNT HOLDERS AND CUSTOMERS. IN ADDITION, STUDENT
+                        SUBLEASE MAKES NO REPRESENTATION OR GUARANTEE REGARDING THE RELIABILITY, AVAILABILITY, OR QUALITY OF THE SERVICES OR ANY
+                        RESIDENTIAL LISTING REQUESTED THROUGH THE USE OF THE SERVICES, OR THAT THE SERVICES WILL BE UNINTERRUPTED OR ERROR-FREE.
+                        <br>
+                        <br>
+                        <b>B. LIMITATION OF LIABILITY</b>
+                        <br>
+                        STUDENT SUBLEASE SHALL NOT BE LIABLE FOR INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, PUNITIVE, OR CONSEQUENTIAL DAMAGES,
+                        INCLUDING LOST PROFITS, LOST DATA, PERSONAL INJURY, OR PROPERTY DAMAGE OR LOSS RELATED TO, IN CONNECTION WITH, OR OTHERWISE
+                        RESULTING FROM ANY USE OF THE SERVICES, REGARDLESS OF THE NEGLIGENCE (EITHER ACTIVE, AFFIRMATIVE, SOLE, OR CONCURRENT) OF
+                        STUDENT SUBLEASE, EVEN IF STUDENT SUBLEASE HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+                        <br>
+                        <br>
+                        STUDENT SUBLEASE SHALL NOT BE LIABLE FOR ANY DAMAGES, LIABILITY OR LOSSES ARISING OUT OF: (i) YOUR USE OF OR RELIANCE ON THE
+                        SERVICES OR YOUR INABILITY TO ACCESS OR USE THE SERVICES; OR (ii) ANY TRANSACTION OR RELATIONSHIP BETWEEN YOU AND ANY OTHER
+                        STUDENT SUBLEASE ACCOUNT HOLDER OR CUSTOMER, EVEN IF STUDENT SUBLEASE HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+                        STUDENT SUBLEASE SHALL NOT BE LIABLE FOR DELAY OR FAILURE IN PERFORMANCE RESULTING FROM CAUSES BEYOND STUDENT SUBLEASE'S
+                        REASONABLE CONTROL.
+                        <br>
+                        <br>
+                        THE SERVICES MAY BE USED BY YOU TO CREATE, POST, AND UPLOAD RESIDENTIAL LISTINGS AS WELL AS DISCUSS, COMMUNICATE, ACQUIRE,
+                        AND AGREE UPON RESIDENTIAL LISTINGS MADE BY OTHER STUDENT SUBLEASE ACCOUNT HOLDERS AND CUSTOMERS, BUT YOU AGREE THAT
+                        STUDENT SUBLEASE HAS NO RESPONSIBILITY OR LIABILITY TO YOU RELATED TO ANY DISCUSSION, COMMUNICATION, OR AGREEMENT SET FORTH
+                        BY YOU AND OTHER STUDENT SUBLEASE ACCOUNT HOLDERS AND CUSTOMERS OTHER THAN AS EXPRESSLY SET FORTH IN THESE TERMS.
+                        <br>
+                        <br>
+                        NOTWITHSTANDING THE FOREGOING, STUDENT SUBLEASE DOES NOT PURPORT TO LIMIT LIABILITY OR ALTER ANY RIGHTS YOU MAY HAVE AS A
+                        CONSUMER THAT CANNOT BE EXCLUDED UNDER APPLICABLE LAW. BECAUSE SOME STATES OR JURISDICTIONS DO NOT ALLOW THE EXCLUSION OF
+                        OR THE LIMITATION OF LIABILITY FOR CONSEQUENTIAL OR INCIDENTAL DAMAGES, IN SUCH STATES OR JURISDICTIONS, STUDENT SUBLEASE’S
+                        LIABILITY SHALL BE LIMITED TO THE EXTENT PERMITTED BY LAW. THIS PROVISION SHALL HAVE NO EFFECT ON STUDENT SUBLEASE’S CHOICE
+                        OF LAW PROVISION SET FORTH BELOW.
+                        <br>
+                        <br>
+                        <b>C. Indemnity</b>
+                        <br>
+                        You agree to indemnify, defend, and hold Student Sublease and its other account holders and customers and their officers,
+                        directors, employees, and agents harmless from any and all claims, demands, losses, liabilities, and expenses (including
+                        attorneys' fees), arising out of or in connection with: (i) your use of the Services or services or goods obtained through
+                        your use of the Services; (ii) your breach or violation of any of these Terms; or (iii) your violation of the rights of any
+                        third party, including other Student Sublease account holders and customers.
+                    </p>
+                    <h6><b>9. Other Provisions</b></h6>
+                    <p>
+                        <b>A. Choice of Law</b>
+                        <br>
+                        These Terms are governed by and construed in accordance with the laws of the State of Georgia, U.S.A., without giving
+                        effect to any conflict of law principles.
+                        <br>
+                        <br>
+                        <b>B. Notice</b>
+                        <br>
+                        Student Sublease may give notice by means of a general notice on the Services, electronic mail to your email address in
+                        your Account or telephone or text message to any phone number provided in connection with your account.  Such notice shall
+                        be deemed to have been given upon the expiration of 12 hours after sending (if sent by email or telephone). You may give
+                        notice to Student Sublease, with such notice deemed given when received by Student Sublease, at any time by first class
+                        mail or pre-paid post to us for service of process, 159 5th Street Northwest, Atlanta, GA 30313 c/o STUDENT SUBLEASE, LLC..
+                        <br>
+                        <br>
+                        <b>C. General</b>
+                        <br>
+                        In these Terms, the words "including" and "include" mean "including, but not limited to." You may not assign these Terms
+                        without Student Sublease's prior written approval. Student Sublease may assign these Terms without your consent to: (i) a
+                        subsidiary or affiliate; (ii) an acquirer of Student Sublease’s equity, business or assets; or (iii) a successor by merger.
+                        Any purported assignment in violation of this section shall be void. No joint venture, partnership, employment, or agency
+                        relationship exists between you, Student Sublease, or any Student Sublease customer or account holder as a result of this
+                        Agreement or use of the Services. If any provision of these Terms is held to be invalid or unenforceable, such provision
+                        shall be struck and the remaining provisions shall be enforced to the fullest extent under law. Student Sublease's failure
+                        to enforce any right or provision in these Terms shall not constitute a waiver of such right or provision unless acknowledged
+                        and agreed to by Student Sublease in writing. This provision shall not affect the Severability and Survivability section of
+                        the Arbitration Agreement of these Terms.
+                    </p>
+                    <h6><b>10. Arbitration Provision</b></h6>
+                    <p>
+                        <b>A.</b> This Agreement is intended to outline a dispute resolution in two parts. (1) All claims and disputes must first
+                        be attempted to be resolved through informal negotiation with Student Sublease representatives. (2) All claims and disputes
+                        that cannot then be resolved shall require arbitration of every claim or dispute that lawfully can be arbitrated, except
+                        for those claims and disputes which by the terms of this Agreement are expressly excluded from its provisions. This Arbitration
+                        Provision is governed by the Federal Arbitration Act, 9 U.S.C. § 1 et seq. (the “FAA”) and evidences a transaction involving interstate commerce. This Arbitration Provision applies to any dispute arising out of or related to this Agreement or termination of the Agreement and survives after the Agreement terminates. Nothing contained in this Arbitration Provision shall be construed to prevent or excuse you from utilizing any informal procedure for resolution of complaints established in this Agreement (if any), and this Arbitration Provision is not intended to be a substitute for the utilization of such procedures.
+                        Except as provided below, arbitration does not limit or affect the legal claims you may bring against the Company.
+                        Agreeing to arbitration only affects where any such claims may be brought and how they will be resolved. Arbitration is a
+                        process of private dispute resolution that does not involve the civil courts, a civil judge, or a jury. Instead, the
+                        parties’ dispute is decided by a private arbitrator selected by the parties using the process set forth herein. Other
+                        arbitration rules and procedures are also set forth herein. Unless the law requires otherwise, as determined by the
+                        Arbitrator based upon the circumstances presented, you will be required to split the cost of any arbitration with the
+                        Company.
+                        <br>
+                        <br>
+                        <b>B. Except as it otherwise provides, this Arbitration Provision is intended to apply to the resolution of disputes that
+                            otherwise would be resolved in a court of law or before any forum other than arbitration, with the exception of
+                            proceedings that must be exhausted under applicable law before pursuing a claim in a court of law or in any forum
+                            other than arbitration. Except as it otherwise provides, this Arbitration Provision requires all such disputes to be
+                            resolved only by an arbitrator through final and binding arbitration on an individual basis only and not by way of
+                            court or jury trial, or by way of class, collective, or representative action.
+                        </b>
+                        <br>
+                        <br>
+                        <b>C.</b> Except as provided below, regarding the Class Action Waiver, such disputes include without limitation disputes
+                        arising out of or relating to interpretation or application of this Arbitration Provision, including the enforceability,
+                        revocability or validity of the Arbitration Provision or any portion of the Arbitration Provision. All such matters shall
+                        be decided by an Arbitrator and not by a court or judge. However, as set forth below, the preceding sentences shall not
+                        apply to disputes relating to the interpretation or application of the Class Action Waiver below, including their
+                        enforceability, revocability or validity.
+                        <br>
+                        <br>
+                        <b>D.</b> Except as it otherwise provides, this Arbitration Provision also applies, without limitation, to all disputes
+                        between you and the Company, as well as all disputes between You and the Company’s or its fiduciaries, administrators,
+                        affiliates, subsidiaries, parents, and all successors and assigns of any of them, including but not limited to any disputes
+                        arising out of or related to this Agreement and disputes arising out of or related to your relationship with the Company,
+                        including termination of the relationship. This Arbitration Provision also applies, without limitation, to disputes
+                        regarding any city, county, state or federal wage-hour law, trade secrets, unfair competition, compensation, breaks and
+                        rest periods, expense reimbursement, termination, harassment and claims arising under the Uniform Trade Secrets Act, Civil
+                        Rights Act of 1964, Americans With Disabilities Act, Age Discrimination in Employment Act, Family Medical Leave Act, Fair
+                        Labor Standards Act, Employee Retirement Income Security Act (except for individual claims for employee benefits under any
+                        benefit plan sponsored by the Company and covered by the Employee Retirement Income Security Act of 1974 or funded by
+                        insurance), and state statutes, if any, addressing the same or similar subject matters, and all other similar federal and
+                        state statutory and common law claims.
+                        <br>
+                        <br>
+                        <b>E.</b> This Agreement is intended to require arbitration of every claim or dispute that lawfully can be arbitrated,
+                        except for those claims and disputes which by the terms of this Agreement are expressly excluded from the Arbitration
+                        Provision.
+                        <br>
+                        <br>
+                        <b>F. Limitations on Arbitration</b> The disputes and claims set forth below shall not be subject to arbitration and the
+                        requirement to arbitrate set forth in this Arbitration Provision shall not apply:
+                        <br>
+                        Regardless of any other terms of this Agreement, nothing prevents you from making a report to or filing a claim or charge
+                        with any government agency, and nothing in this Agreement or Arbitration Provision prevents the investigation by a
+                        government agency of any report, claim or charge otherwise covered by this Arbitration Provision. Nothing in this
+                        Arbitration Provision shall be deemed to preclude or excuse a party from bringing an administrative claim before any agency
+                        in order to fulfill the party's obligation to exhaust administrative remedies before making a claim in arbitration;
+                        <br>
+                        Disputes that may not be subject to a predispute arbitration agreement pursuant to applicable Federal law or Executive
+                        Order are excluded from the coverage of this Arbitration Provision;
+                        <br>
+                        Disputes regarding you or the Company’s intellectual property rights;
+                        <br>
+                        <br>
+                        <b>G.</b> Selection of Arbitrator. The Arbitrator shall be selected by mutual agreement of you and the Company. Unless you
+                        and the Company mutually agree otherwise, the Arbitrator shall be an attorney licensed to practice in the location where
+                        the arbitration proceeding will be conducted, or a retired federal or state judicial officer who presided in the jurisdiction
+                        where the arbitration will be conducted. If the Parties cannot agree on an Arbitrator, then an arbitrator will be selected
+                        using the alternate strike method from a list of five (5) neutral arbitrators provided by JAMS (Judicial Arbitration &
+                        Mediation Services). You will have the option of making the first strike. If a JAMS arbitrator is used, then the JAMS
+                        Streamlined Arbitration Rules & Procedures rules will apply; however, if there is a conflict between the JAMS Rules and
+                        this Agreement, this Agreement shall govern. Those rules are available at <b style="color: #33b5e5;">http://www.jamsadr.com/rules-streamlined-arbitration/</b>.
+                        The location of the arbitration proceeding shall be in Atlanta, Georgia, unless otherwise agreed by the parties in writing.
+                        <br>
+                        <br>
+                        <b>H.</b> All claims in arbitration are subject to the same statutes of limitation that would apply in court. The party
+                        bringing the claim must demand arbitration in writing and deliver the written demand by hand or first class mail to the
+                        other party within the applicable statute of limitations period. The demand for arbitration shall include identification of
+                        the Parties, a statement of the legal and factual basis of the claim(s), and a specification of the remedy sought. Any
+                        demand for arbitration made to the Company shall be provided to Student Sublease, LLC c/o, 159 5th Street Northwest, Atlanta,
+                        GA 30313. The arbitrator shall resolve all disputes regarding the timeliness or propriety of the demand for arbitration.
+                        A party may apply to a court of competent jurisdiction for temporary or preliminary injunctive relief in connection with an
+                        arbitrable controversy, but only upon the ground that the award to which that party may be entitled may be rendered
+                        ineffectual without such provisional relief.
+                        <br>
+                        <br>
+                        <b>I.</b> Conduct of Arbitration. In arbitration, the Parties will have the right to conduct adequate civil discovery,
+                        bring dispositive motions, and present witnesses and evidence as needed to present their cases and defenses, and any
+                        disputes in this regard shall be resolved by the Arbitrator. <b>You and the Company agree to resolve any dispute that is in
+                        arbitration on an individual basis only, and not on a class, collective action, or representative basis
+                        (“Class Action Waiver”). The Arbitrator shall have no authority to consider or resolve any claim or issue any relief on any
+                        basis other than an individual basis. The Arbitrator shall have no authority to consider or resolve any claim or issue
+                        any relief on a class, collective, or representative basis.</b> Notwithstanding any other provision of this Agreement, the
+                        Arbitration Provision or the JAMS Streamlined Arbitration Rules & Procedures, disputes regarding the enforceability,
+                        revocability or validity of the Class Action Waiver may be resolved only by a civil court of competent jurisdiction and not
+                        by an arbitrator. In any case in which (1) the dispute is filed as a class, collective, or representative action and (2)
+                        there is a final judicial determination that all or part of the Class Action Waiver unenforceable, the class, collective,
+                        and/or representative action to that extent must be litigated in a civil court of competent jurisdiction, but the portion
+                        of the Class Action Waiver that is enforceable shall be enforced in arbitration. While the Company will not take any
+                        retaliatory action in response to any exercise of rights you may have under Section 7 of the National Labor Relations Act,
+                        if any, the Company shall not be precluded from moving to enforce its rights under the FAA to compel arbitration on the
+                        terms of service set forth in this Agreement.
+                        <br>
+                        <br>
+                        <b>J.</b> Costs of Arbitration. Each party will pay the fees for his, her or its own attorneys, subject to any remedies to
+                        which that party may later be entitled under applicable law (i.e., a party prevails on a claim that provides for the award
+                        of reasonable attorney fees to the prevailing party). In all cases where required by law, the Company will pay the Arbitrator's
+                        and arbitration fees. If under applicable law the Company is not required to pay all of the Arbitrator’s and/or arbitration
+                        fees, such fee(s) will be apportioned equally between the Parties or as otherwise required by applicable law. However, you
+                        will not be required to bear any type of fee or expense that you would not be required to bear if you had filed the action
+                        in a court of law. Any disputes in that regard will be resolved by the Arbitrator as soon as practicable after the
+                        Arbitrator is selected, and Company shall bear all of the Arbitrator’s and arbitration fees until such time as the
+                        Arbitrator resolves any such dispute.
+                        <br>
+                        <br>
+                        <b>K.</b> Hearing and Award. The Parties will arbitrate their dispute before the Arbitrator, who shall confer with the
+                        Parties regarding the conduct of the hearing and resolve any disputes the Parties may have in that regard. Within 30 days of
+                        the close of the arbitration hearing, or within a longer period of time as agreed to by the Parties or as ordered by the
+                        Arbitrator, any party will have the right to prepare, serve on the other party and file with the Arbitrator a brief.
+                        The Arbitrator may award any party any remedy to which that party is entitled under applicable law, but such remedies shall
+                        be limited to those that would be available to a party in his or her individual capacity in a court of law for the claims
+                        presented to and decided by the Arbitrator, and no remedies that otherwise would be available to an individual in a court of
+                        law will be forfeited by virtue of this Arbitration Provision. The Arbitrator will issue a decision or award in writing,
+                        stating the essential findings of fact and conclusions of law. A court of competent jurisdiction shall have the authority
+                        to enter a judgment upon the award made pursuant to the arbitration. The Arbitrator shall not have the power to commit
+                        errors of law or legal reasoning, and the award may be vacated or corrected on appeal to a court of competent jurisdiction
+                        for any such error.
+                        <br>
+                        <br>
+                        <b>L.</b> Opt-Out. Arbitration is not a mandatory condition of your contractual relationship with the Company. If you do
+                        not want to be subject to this Arbitration Provision, you may opt out of this Arbitration Provision by notifying the
+                        Company in writing of your desire to opt out of this Arbitration Provision, either by (1) sending, within 30 days of the
+                        date this Agreement is executed by you, electronic mail via <b style="color: #33b5e5;">www.studentsublease.com/contact/</b>,
+                        stating your name and intent to opt out of the Arbitration Provision or (2) by sending a letter by U.S. Mail, or by any
+                        nationally recognized delivery service (e.g, UPS, Federal Express, etc.), or by hand delivery to:
+                        <br>
+                        Student Sublease, LLC
+                        <br>
+                        c/o 159 5th Street Northwest
+                        <br>
+                        Atlanta, GA 30339
+                        <br>
+                        <br>
+                        In order to be effective, the letter under option (2) must clearly indicate your intent to opt out of this Arbitration
+                        Provision and must be dated and signed. The envelope containing the signed letter must be received (if delivered by hand)
+                        or post-marked within 30 days of the date this Agreement is executed by you. Your writing opting out of this Arbitration
+                        Provision, whether sent by (1) or (2), will be filed with a copy of this Agreement and maintained by the Company. Should
+                        you not opt out of this Arbitration Provision within the 30-day period, you and the Company shall be bound by the terms of
+                        this Arbitration Provision. You have the right to consult with counsel of your choice concerning this Arbitration Provision. You understand that you will not be subject to retaliation if you exercise your right to assert claims or opt-out of coverage under this Arbitration Provision.
+                        <br>
+                        <br>
+                        This Arbitration Provision is the full and complete agreement relating to the formal resolution of disputes arising out of
+                        this Agreement. Except as stated above, in the event any portion of this Arbitration Provision is deemed unenforceable,
+                        the remainder of this Arbitration Provision will be enforceable.
+                        <br>
+                        <br>
+                        <b>WHETHER TO AGREE TO ARBITRATION IS AN IMPORTANT BUSINESS DECISION. IT IS YOUR DECISION TO MAKE, AND YOU SHOULD NOT RELY
+                        SOLELY UPON THE INFORMATION PROVIDED IN THIS AGREEMENT AS IT IS NOT INTENDED TO CONTAIN A COMPLETE EXPLANATION OF THE
+                        CONSEQUENCES OF ARBITRATION. YOU SHOULD TAKE REASONABLE STEPS TO CONDUCT FURTHER RESEARCH AND TO CONSULT WITH OTHERS — INCLUDING
+                        BUT NOT LIMITED TO AN ATTORNEY — REGARDING THE CONSEQUENCES OF YOUR DECISION, JUST AS YOU WOULD WHEN MAKING ANY OTHER
+                        IMPORTANT BUSINESS OR LIFE DECISION.</b>
+                        <br>
+                        <br>
+                        By clicking “I agree to the terms of service”, you expressly acknowledge that you have read, understood, and taken steps to
+                        thoughtfully consider the consequences of this Agreement, that you agree to be bound by the terms of service of the
+                        Agreement, and that you are legally competent to enter into this Agreement with the Company.
+                    </p>
+
+                </div>
+                <div class="modal-footer" style="height: 10%; min-height:60px;">
+                    <button type="button" class="btn btn-info btn-sm" style="border-radius: 5px;" data-dismiss="modal">Close</button>
+                    <a class="btn btn-info btn-sm" style="border-radius: 5px;" href="documents/Student_Sublease_Terms_of_Service.pdf" target="_blank">Download</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Privacy Modal -->
+    <div class="modal fade" id="privacyModal" tabindex="-1" role="dialog" aria-labelledby="privacyModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-legal">
+            <div class="modal-content modal-content-legal" style="border-radius: 10px; height: 100%;">
+                <div class="modal-header" style="height: 10%; min-height:60px;">
+                    <h6 class="modal-title w-100" id="privacyModalLabel"><b>Student Sublease Privacy Policy</b></h6>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body modal-body-legal">
+                    <h6><b>Effective: January 1, 2021</b></h6>
+                    <br>
+                    <h6><b>Introduction</b></h6>
+                    <p>
+                        This is STUDENT SUBLEASE’s policy regarding the collection, use, and disclosure of personally-identifiable information that we
+                        may obtain from you. It explains what kinds of information we collect, how we collect this information, how we use this
+                        information, whether we share this information, and what kind of control you have over our use, sharing, and retention of this
+                        information. If you use the Services, or otherwise provide personally identifiable information (“PII”) to us, you agree to be
+                        bound by the terms of this policy.
+                    </p>
+                    <h6><b>WHAT KIND OF INFORMATION DO WE COLLECT AND HOW DO WE COLLECT IT?</b></h6>
+                    <p>
+                        We typically collect information that you provide through our website or application, which uses cookies to automatically
+                        collect information about your computing device, your use of the website or the application, and about your use of our
+                        website and application. This information includes, but is not limited to, data about your operating system, IP address,
+                        geolocation data, language, the website pages or sections or the application you consulted, key words, date, time, the
+                        amount of time you spend using the Webpage and the application and parts of the webpage and the application you use. In
+                        addition to the website and the application, we may also collect and combine information from the following sources:
+                        <ul>
+                            <li>Your feedback</li>
+                            <li>
+                                Business partners though which you create or access your Student Sublease account, e.g.
+                                social media services or applications or websites using our APIs or whose API we use
+                            </li>
+                            <li>Publicly-available sources</li>
+                            <li>Marketing organizations</li>
+                            <li>
+                                When you establish your account, STUDENT SUBLEASE will collect certain information about you in order to provide
+                                the Services (as defined in the Terms of Use) to you, including personally- identifiable information (“PII”).
+                                PII consists of information which enables you to be uniquely identified. STUDENT SUBLEASE collects the following
+                                personal data from you when you register for an account with us:
+                                <ul>
+                                    <li>Your full name</li>
+                                    <li>Your email address</li>
+                                    <li>Your login password</li>
+                                    <li>Your telephone number</li>
+                                    <li>The college or university in  which you attend</li>
+                                </ul>
+                            </li>
+                            <li>When you contact Student Sublease for customer support</li>
+                            <li>When you contact other Student Sublease account holders and customers</li>
+                        </ul>
+                        We may also collect the following information when you use the Services:
+                        <br>
+                        <ul>
+                            <li>
+                                Location Information
+                                <ul>
+                                    <li>
+                                        When searching for a Residential Listing on our website, we may use your location or the location you search
+                                        to find relevant listings around you or the location you search
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                Device Information
+                                <ul>
+                                    <li>
+                                        Student Sublease may collect information about devices you use to access our services, including the hardware
+                                        models, operating systems and versions, software, file names and versions, preferred languages, unique device
+                                        identifiers, advertising identifiers, serial numbers, device motion information, mobile network information,
+                                        computer network information, and browser information.
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                Conversation and Messaging Information
+                                <ul>
+                                    <li>
+                                        Student Sublease will collect information regarding conversations and messages you have through The Service
+                                        with other Student Sublease account holders and customers including who the conversation is with, the
+                                        messages exchanged, whether or not the messages have been read, and the date and time the messages were
+                                        exchanged. Student Sublease may use this information to notify you of unread messages. Student Sublease may
+                                        also use this information for customer support services (including to resolve disputes between Student
+                                        Sublease account holders and customers), for safety and security purposes, and for analytics. Student
+                                        Sublease employees, partners, and personnel will not view or share the messages between you and another
+                                        Student Sublease account holder and customer.
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                Log Information
+                                <ul>
+                                    <li>
+                                        When you interact with our services, we collect server logs, which may include information like device IP
+                                        address, access dates and times, website features or pages viewed, website crashes and other system
+                                        activity, and the third-party site or service you were using before interacting with our services.
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                Search Information
+                                <ul>
+                                    <li>
+                                        Student Sublease may collect search queries made by you while using the Service to give you access to
+                                        better and more targeted Residential Listing results.
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </p>
+                    <h6><b>HOW DO WE USE THE DATA WE COLLECT?</b></h6>
+                    <p>
+                        Any information collected by STUDENT SUBLEASE  may be used for the following purposes:
+                        <br>
+                        <ul>
+                            <li>Providing the Services and associated features</li>
+                            <li>Safety and security</li>
+                            <li>Customer support</li>
+                            <li>Research and development</li>
+                            <li>Communications Among Users</li>
+                            <li>Communications from Us</li>
+                            <li>Application Analytics</li>
+                            <li>
+                                STUDENT SUBLEASE might combine your PII with non-identifying information obtained either from you directly,
+                                or from the website or application. If we combine PII with non-identifying information, we will protect the
+                                combined information using commercially-reasonable means as we would protect information consisting entirely of
+                                PII.
+                            </li>
+                            <li>
+                                If STUDENT SUBLEASE plans to use your PII for a purpose other than those included in this section, it will give
+                                you notice of this beforehand, including what specific type of information will be used and how we will use it,
+                                and you will have the right to opt-out of having your data used for such purpose.
+                            </li>
+                        </ul>
+                    </p>
+                    <h6><b>HOW DO WE PROTECT THE DATA THAT WE COLLECT?</b></h6>
+                    <p>
+                        STUDENT SUBLEASE  strives to ensure the security and confidentiality of the data and information it holds, including PII.
+                        For this reason, we have taken technical and organizational security measures that are commercially reasonable in order to
+                        prevent loss, wrongful use, or unauthorized access to such data and information. For example, we may use firewalls and
+                        Secure Socket Layer (SSL) encryption to ensure security of information and data in transit and in storage. At STUDENT
+                        SUBLEASE we are committed to moving fast and responsibly if the security of your data is at risk and to inform you about
+                        this if this is important with the greatest diligence. Please note that we will never ask you for your password via email
+                        or over the phone. All of these functions are handled through the website and the Service. You should report to us
+                        immediately at <b style="color: #33b5e5;">www.studentsublease.com/contact/</b> if anyone attempts to have you disclose
+                        your password or credit card information over the phone or via email.
+                    </p>
+                    <h6><b>WITH WHOM DOES STUDENT SUBLEASE SHARE MY INFORMATION, AND HOW DOES THIS SHARING OCCUR?</b></h6>
+                    <p>
+                        We may disclose your information, including PII, to our affiliates and certain non-affiliated organizations, including:
+                        <br>
+                        <ul>
+                            <li>
+                                To government agencies, including law enforcement agencies, where disclosure is
+                                required by law, to protect our rights and well-being, and that of our Customers and the general public.
+                                We reserve the right to disclose your PII to law enforcement if we suspect you are involved in any illegal activity. We will typically disclose this information electronically via computer network, or via fax or phone, although we may also pass information physically (i.e. hardcopy).
+                            </li>
+                            <li>
+                                We may share certain information with other Student Sublease account holders and customers that includes, but is
+                                not limited to, your first and last name, the college or university that you attend, your profile picture, or the
+                                Residential Listings that you have created, posted, or uploaded.
+                            </li>
+                            <li>
+                                We may share your information if we believe it is required by applicable law, regulation, legal process, or lawful
+                                government request. This may include sharing your information with law enforcement officials, government authorities,
+                                or other third parties as necessary to enforce our Terms of Service or other policies, or to protect the rights and
+                                property of our self or others, or in the event of a claim or dispute arising from the Services.
+                            </li>
+                            <li>
+                                We may share your information with others in connection with, or during negotiations for a merger, asset purchase,
+                                or restructuring, financing, or acquisition of all or a portion of our business with or into another company.
+                            </li>
+                        </ul>
+                    </p>
+                    <h6><b>WHAT CONTROL DO YOU HAVE OVER OUR COLLECTION OF DATA?</b></h6>
+                    <p>
+                        You can disable cookies at any time, although this could limit access to some sections of the browser and your browsing
+                        could be blocked at any time. You can block or disable cookies using your browser, which allows you to refuse the
+                        installation of all or some of the cookies, and to delete cookies that have already been installed. Most browsers are able
+                        to warn of the presence of cookies or reject them automatically. If you reject them, you may continue to use our website
+                        (and application), although the use of some of its services may be limited, meaning that your experience on our website
+                        (and application) may be less satisfactory.
+                        <br>
+                        <br>
+                        In addition, our application allows you to adjust your privacy settings, and mobile operating systems give users the
+                        ability to also adjust what types of information is collected, including information gathered using onboard devices such
+                        as GPS, WiFi, and cellular transceivers.
+                        <br>
+                        <br>
+                        You may opt-out of any marketing and promotional messages you receive by contacting us at
+                        <b style="color: #33b5e5;">www.studentsublease.com/contact/</b> or by opting out via your Student Sublease account page.
+                        Please allow ten (10) days for this opt-out to take effect.
+                        <br>
+                        <br>
+                        STUDENT SUBLEASE retains your information while your account remains active, unless you ask us to delete your information
+                        or your account. You may request to have your information deleted or anonymized, except as provided below. STUDENT SUBLEASE
+                        will retain your information after your account is deleted in the following cases:
+                        <ul>
+                            <li>If there is an unresolved issue relating to your account, such as an unresolved claim or dispute;</li>
+                            <li>If we are required to by applicable law, whether in aggregated and/or anonymized form</li>
+                            <li>
+                                We may also retain certain information if necessary for our legitimate business interests, such as fraud prevention
+                                and enhancing users' safety and security. For example, if we shut down a user's account because of unsafe behavior
+                                or security incidents, we may retain certain information about that account to prevent that user from opening a
+                                new account in the future.
+                            </li>
+                        </ul>
+                    </p>
+                    <h6><b>WHO OWNS THE DATA COLLECTED?</b></h6>
+                    <p>
+                        By using Student Sublease and accompanying services as outlined in the Terms of Service, you grant Student Sublease a
+                        limited license to store and share the content you provide, including but not limited to Residential Listing pictures and
+                        related information, Residential Listing location, and your account information specified in our Terms of Service and
+                        Privacy Policy. You consent to the sharing of such content outlined here to other Student Sublease account holders and
+                        customers and partners of Student Sublease.
+                        <br>
+                        <br>
+                        By opening an account and posting, uploading, or creating content onto this platform, you acknowledge that you own and are
+                        responsible for all the content you provide. This data and content must be in accordance with the rest of this Privacy
+                        Policy and our Terms of Service. You have full ownership over your data, and you may delete this information at any time
+                        by contacting us at <b style="color: #33b5e5;">www.studentsublease.com/contact/</b>, managing your account from your
+                        Student Sublease account page, or managing your listings from the My Listings page.
+                    </p>
+                    <h6><b>OTHER IMPORTANT INFORMATION</b></h6>
+                    <p>
+                        You guarantee the quality of the information provided to us. That is, you guarantee that the data and information you
+                        provide is real, truthful, up-to-date and also belongs to you and not to third parties. Therefore, you may not supply data
+                        that is false or out-of-date. You must always identify yourself with your personal electronic mail address and with truthful
+                        and current data. This Privacy Policy, only refers to our website and application, and does not apply to links or websites of
+                        third parties which can be accessed from the website or the application. We have no control over the destination of these
+                        links and are in no way responsible for the contents of any of the website destinations from a link, nor for any link
+                        included in a website which is reached from the website or from the application, nor for any change or update made to these
+                        sites. These links are only provided to inform you about other sources of information, and the inclusion of a link does not
+                        mean that STUDENT SUBLEASE approves of the website linked to.
+                        <br>
+                        <br>
+                        This Privacy Policy shall be governed by the laws of the State of Georgia, notwithstanding its conflicts of laws provisions.
+                        Any disputes arising under this Privacy Policy shall be adjudicated in the state and federal courts located in Fulton
+                        County Georgia, and the Northern District of Georgia, respectively, and you hereby agree to submit to the personal
+                        jurisdiction of these courts by using our website and application.
+                        <br>
+                        <br>
+                        By clicking “I agree to the privacy policy”, you expressly acknowledge that you have read, understood, and taken steps to
+                        thoughtfully consider the consequences of this Agreement, that you agree to be bound by the privacy policy of the Agreement,
+                        and that you are legally competent to enter into this Agreement with the Company.
+                    </p>
+                    
+                </div>
+                <div class="modal-footer" style="height: 10%; min-height:60px;">
+                    <button type="button" class="btn btn-info btn-sm" style="border-radius: 5px;" data-dismiss="modal">Close</button>
+                    <a class="btn btn-info btn-sm" style="border-radius: 5px;" href="documents/Student_Sublease_Privacy_Policy.pdf" target="_blank">Download</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="page-footer font-small blue-grey lighten-5 pt-2">
+        <div class="container text-left mt-5">
+            <div class="row mt-3 text-dark">
+                <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mb-4">
+                    <!-- Content -->
+                    <div class="ml-5">
+                        <h6 class="font-weight-bold">studentsublease.com</h6>
+                        <hr class="info-color accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+                        <p>
+                            A platform created by students for students to ensure every student
+                            can find an affordable place to live.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mb-4">
+                    <!-- Links -->
+                    <div class="ml-5">
+                        <h6 class="font-weight-bold">Useful Links</h6>
+                        <hr class="info-color accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+                        <p><a class="text-dark" href="#">Search</a></p>
+                        <p><a class="text-dark" href="#">Create Listing</a></p>
+                        <p><a class="text-dark" href="#">Help</a></p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mb-4">
+                    <div class="ml-5">
+                        <h6 class="font-weight-bold">Other Links</h6>
+                        <hr class="info-color accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+                        <p><a class="text-dark" href="#" data-toggle="modal" data-target="#termsModal">Terms of Service</a></p>
+                        <p><a class="text-dark" href="#" data-toggle="modal" data-target="#privacyModal">Privacy Policy</a></p>
+                        <p><a class="text-dark" href="#">About Us</a></p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mb-4">
+                    <!-- Links -->
+                    <div class="ml-5">
+                        <h6 class="font-weight-bold">Get Connected</h6>
+                        <hr class="info-color accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+                        <p><a target="_blank" rel="noopener noreferrer" class="text-dark" href="https://www.facebook.com/StudentSublease"><i class="fa fa-facebook mr-3"></i> Facebook</a></p>
+                        <p><a target="_blank" rel="noopener noreferrer" class="text-dark" href="https://www.instagram.com/student_sublease/"><i class="fa fa-instagram mr-3"></i>Instagram</a></p>
+                        <p><a target="_blank" rel="noopener noreferrer" class="text-dark" href="https://www.linkedin.com/company/studentsublease/"><i class="fa fa-linkedin mr-3"></i> Linkedin</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-copyright text-center black-text py-3">© 2021 Copyright:
+            <strong>Student Sublease, LLC</strong>
+        </div>
+        <!-- {% endif %} -->
+    </footer>
+
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/3.1.62/jquery.inputmask.bundle.js"></script>
+
+    <!-- Popper.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
+
+    <!-- Bootstrap -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.min.js"></script>
+
+    <!-- Material Design for Bootstrap -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.16/js/mdb.min.js"></script>
+
+    <!-- {% block script_content %}{% endblock %} -->
+
+    <script>
+        function escapeHtml(unsafe) {
+            return unsafe
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;")
+                .replace(/'/g, "&#039;");
+        }
+
+        function share_fb(url) {
+            var w = 626;
+            var h = 436;
+            var left = (screen.width/2)-(w/2);
+            window.open('https://www.facebook.com/sharer/sharer.php?u='+url+'&quote=Check out this listing on studentsublease.com!','facebook-share-dialog', 'width='+w+', height='+h+', left='+left);
+        }
+
+        function share_twitter(url) {
+            var w = 626;
+            var h = 436;
+            var left = (screen.width/2)-(w/2);
+            window.open('https://twitter.com/intent/tweet?text=Check out this listing on studentsublease.com! \n'+url, 'width='+w+', height='+h+', left='+left);
+        }
+
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
+
+        $('#copyUrlButton').on('hidden.bs.tooltip', function () {
+            $("#copyUrlButton").attr('data-original-title', "Copy URL")
+        })
+
+        function copyUrl() {
+            navigator.clipboard.writeText("{{ request.build_absolute_uri }}");
+            $("#copyUrlButton").attr('data-original-title', "Copied!").tooltip('show');
+        }
+
+        new WOW().init();
+    </script>
+</body>
+</html>

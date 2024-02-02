@@ -1,0 +1,143 @@
+
+.navbar-light .navbar-nav .active::after{
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  right: 0;
+  width: 100%;
+  content: " ";
+  color: #33b5e5;
+  border-bottom: 5px solid #33b5e5;
+}
+
+.navbar-light .navbar-nav .active a {
+  background-color: transparent !important;
+}
+
+.navbar-nav > li {
+  float: left;
+  position: relative;
+}
+
+.text-danger-dark {
+    color: #CC0000;
+}
+
+.clickable {
+    cursor: pointer;
+}
+
+.modal-dialog-legal,
+.modal-content-legal {
+    /* 80% of window height */
+    height: 90%;
+    width: 100%;
+    margin-top: 50px;
+}
+
+.modal-body-legal {
+  height: 80%;
+  max-height: calc(100vh - 50px);
+  overflow-y: auto;
+}
+
+.badge-danger-dark {
+    background-color: #CC0000;
+}
+
+b, strong {
+    font-weight: bold;
+}
+
+body, p, h1, h2, h3, h4, h5, h6 {
+    font-weight: 400;
+}
+
+.navbar {
+    font-weight: 400;
+}
+
+.fill-window {
+    min-height: 80vh;
+}
+
+.modal-open header .navbar {
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+}
+
+body .modal-open {
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+}
+
+body.modal-open {
+    overflow-y: hidden;
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+}
+
+.logo-sm {
+    width: 25px;
+    height: 25px;
+    object-fit: contain;
+}
+
+.logo-md {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+}
+
+.logo-lg {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+}
+
+ul.three > li  {
+    width: 33.333%;
+    float:left;
+    display:inline;
+    padding-right:2px;
+}
+
+@media screen and (max-width: 600px) {
+    ul.three > li  {
+        width: 50%;
+        float:left;
+        display:inline;
+        padding-right:2px;
+    }
+}
+
+ul.two > li  {
+    width: 50%;
+    float:left;
+    display:inline;
+    padding-right:2px;
+}
+
+ul.one > li  {
+    width: 100%;
+    float:left;
+    display:inline;
+    padding-right:2px;
+}
+
+ul.three, ul.two, ul.one {
+    padding-inline-start: 0;
+}
+
+ul.three > li > label, ul.two > li > label, ul.one > li > label {
+    display: block;
+    padding-left: 1.5em;
+    text-indent: -1em;
+}
+
+.bulletless-form ul li {
+    list-style: none;
+}
